@@ -6,7 +6,20 @@
 
 var generateBtn = document.querySelector("#generate");
 
-//...prompts user for password...
+var characters = {
+  from: 8,
+  to: 128
+}
+var letters = ("abcdefghfghijklmnopqrstuvwxyz");
+var numbers = [0,1,2,3,4,5,6,7,8,9];
+var addLower = password.toLowerCase();
+var addUpper = password.toUpperCase();
+var specialChars = [];
+var charLength = (8 - 128);
+
+// Split ltters string into individual characters in array
+chars = letters.split("");
+
 
 // When prompted for password criteria
 //  I select which criteria to include in the password
@@ -28,6 +41,10 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  function generatePassword() {
+
+  }
+
   passwordText.value = password;
 
 }
@@ -35,3 +52,5 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//Alerts the user of the new password
+window.alert("Your new password has been generated!");

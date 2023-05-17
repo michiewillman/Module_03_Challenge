@@ -24,10 +24,9 @@ var generateBtn = document.querySelector("#generate");
   var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var upperLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-  var passLength = "";
+  var passLength = getPassLength();
 
-
-  // Get password choices from user
+  // Get password length choice from user
   function  getPassLength() {
     var passLength = parseInt(prompt("How many characters should the password be?", "Must be between 8 and 128."));
 
@@ -40,8 +39,8 @@ var generateBtn = document.querySelector("#generate");
     }
   }
 
+  // Generate password using user's character choices
   function generatePassword() {
-    getPassLength();
     var useNumbers = confirm("Should the password use numbers?");
     var useLower = confirm("Should the password use Lowercase letters?");
     var useUpper = confirm("Should the password use Uppercase letters?");

@@ -11,36 +11,39 @@ var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 var upperLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
+// Get password length choice from user
+var passLength = getPassLength();
+function  getPassLength() {
+  var passLength = parseInt(prompt("How many characters should the password be?", "Must be between 8 and 128."));
+
+  // Repeat function if length does not meet requirements
+  if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
+    alert("Sorry, your entry must be a number between 8 and 128.");
+    getPassLength();
+  } else {
+    return passLength;
+  }
+}
 
 
-  // Generate password using user's character choices
-  function generatePassword() {
-    
-    // Get password length choice from user
-    var passLength = getPassLength();
-    function  getPassLength() {
-      var passLength = parseInt(prompt("How many characters should the password be?", "Must be between 8 and 128."));
+// Generate password using user's character choices
+function generatePassword() {
+  
+  // Prompt user for their choices
+  var useNumbers = confirm("Should the password use numbers?");
+  var useLower = confirm("Should the password use Lowercase letters?");
+  var useUpper = confirm("Should the password use Uppercase letters?");
+  var useSpecial = confirm("Should the password use special characters?");
 
-      // Repeat function if length does not meet requirements
-      if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
-        alert("Sorry, your entry must be a number between 8 and 128.");
-        getPassLength();
-      } else {
-        return passLength;
-      }
-    }
+  // Set empty strings for choice chars to be drawn from randomly
+  var choiceString = "";
+  var newPassword = "";
 
-    var useNumbers = confirm("Should the password use numbers?");
-    var useLower = confirm("Should the password use Lowercase letters?");
-    var useUpper = confirm("Should the password use Uppercase letters?");
-    var useSpecial = confirm("Should the password use special characters?");
-
-    if (!useNumbers && !useLower && !useUpper && !useSpecial) {
-      alert("You must choose at least one character type to use in the password.");
-    } else {
-
-    var choiceString = "";
-    var newPassword = "";
+  // If user declines using all character choices
+  if (!useNumbers && !useLower && !useUpper && !useSpecial) {
+    alert("You must choose at least one character type to use in the password.");
+  } else // Continue function to generate password
+  {
 
     // Based on user inputs, these variables will be true or false
     if (useUpper) {
@@ -55,16 +58,16 @@ var special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", 
     if (useSpecial) {
       choiceString += special.join("");
     } 
-  
+
     for (let i = 0; i < passLength; i++) {
       let random = Math.floor(Math.random() * choiceString.length);
       newPassword += choiceString.charAt(random);
     }
-  
+
     return newPassword;
-    
-    }
+  
   }
+}
 
 // Write password to the #password input
 function writePassword() {

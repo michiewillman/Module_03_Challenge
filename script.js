@@ -43,7 +43,7 @@ function generatePassword() {
   if (!useNumbers && !useLower && !useUpper && !useSpecial) {
     alert("You must choose at least one character type to use in the password.");
   } else // Continue function to generate password
-  {
+    {
 
     // Based on user inputs, these variables will be true or false
     if (useUpper) {
@@ -59,8 +59,8 @@ function generatePassword() {
       choiceString += special.join("");
     } 
 
-    for (let i = 0; i < passLength; i++) {
-      let random = Math.floor(Math.random() * choiceString.length);
+    for (var i = 0; i < passLength; i++) {
+      var random = Math.floor(Math.random() * choiceString.length);
       newPassword += choiceString.charAt(random);
     }
 

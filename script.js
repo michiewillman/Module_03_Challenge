@@ -40,7 +40,7 @@ function generatePassword() {
 
   // If user declines using all character choices
   if (!useNumbers && !useLower && !useUpper && !useSpecial) {
-    alert("You must choose at least one character type to use in the password.");
+    alert("You must choose at least one character type to use in the password. Please Generate Password again.");
     return "";
   } else // Continue function to generate password
     {
@@ -64,6 +64,9 @@ function generatePassword() {
       newPassword += choiceString.charAt(random);
     }
 
+    // // //Alerts the user of the new password
+    alert("A new password has been generated.");
+
     return newPassword;
   
   }
@@ -83,6 +86,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // // // Generates the first password on page load
 writePassword();
-
-// // //Alerts the user of the new password
-alert("A new password has been generated.");

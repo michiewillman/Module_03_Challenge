@@ -25,7 +25,6 @@ function  getPassLength() {
   }
 }
 
-
 // Generate password using user's character choices
 function generatePassword() {
   
@@ -42,6 +41,7 @@ function generatePassword() {
   // If user declines using all character choices
   if (!useNumbers && !useLower && !useUpper && !useSpecial) {
     alert("You must choose at least one character type to use in the password.");
+    return "";
   } else // Continue function to generate password
     {
 

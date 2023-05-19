@@ -27,3 +27,17 @@ console.log(sum(1, 2, 3, 4, 5, 6, 100));
       special[Math.floor(Math.random() * special.length)];
     }
   
+
+    var charTypeSelected = false;
+    // This loop ensures the user selects at least one character type
+    while (charTypeSelected == false) {
+      var lowerCase = getChoice("lowercase");
+      var upperCase = getChoice("uppercase");
+      var numericCharacters = getChoice("numeric");
+      var specialCharacters = getChoice("special");
+      if ((lowerCase) || (upperCase) || (numericCharacters) || (specialCharacters)) {
+        charTypeSelected = true;
+      } else {
+        window.alert("You must select at least one character type.")
+      }
+    }
